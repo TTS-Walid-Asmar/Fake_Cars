@@ -1,0 +1,35 @@
+
+<div class="row" align= "center">
+  <h1>Welcome to This Here Fake Auto Dealership</h1>
+   <p>
+     Where the road never actuallly meets the rubber. &copy
+   </p>
+</div>
+<br />
+<br />
+
+<div class="container-fluid" align="center">
+  <div class="row">
+    <div class="col-md-10" align="center">
+
+<div class="table-responsive" align="center">
+  <table class="table table-hover" align="center">
+    <thead>
+      <tr><h3>Fake Deals Snapshot</h3> </tr>
+      </tr>
+     </thead>
+     <tbody>
+     <% @vehicle_list.each do |vehicle| %>
+       <tr>
+         <td><strong><%= link_to vehicle.make.capitalize, vehicle %></strong></td>
+         <td><strong><%= link_to vehicle.model.capitalize, vehicle %></strong></td>
+         <td><strong><%= link_to vehicle.year, vehicle %></strong></td>
+         <td><strong><%= link_to "#{vehicle.mileage} mi", vehicle %></strong></td>
+       </tr>
+       <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dealership</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
+
+  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" %>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<style>
+
+.cant-see-me  {
+  display: none;
+}
+.panel-transparent .panel-body {
+  background-color: #FFFFEA;
+  color: #211A1D;
+}
+
+body {
+  background-color: #2A2E45;
+  color: #96897B;
+}
+
+.table-responsive {
+  color: #A7C4B5;
+
+}
+
+</style>
+<% if user_signed_in? %>
+
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+     <li>
+     <%= link_to 'Snapshot', root_path, class: "navbar-brand" %>
+     </li>
+     <li>
+       <%= link_to 'All Cars', vehicles_path, class: "navbar-brand" %>
+     </li>
+     <li>
+       <%= link_to 'My Profile', edit_user_registration_path, class: "navbar-link" %>
+     </li>
+    </ul>
+    <div class="nav  navbar-right">
+        <%= link_to 'Sign Out', destroy_user_session_path,        method: :delete, class: "navbar-brand"%>
+    </div>
+
+  </div><!-- /.container-fluid --->
+</nav>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

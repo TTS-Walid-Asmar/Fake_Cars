@@ -1,0 +1,61 @@
+<%= form_for(@vehicle) do |f| %>
+  <% if @vehicle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehicle.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @vehicle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+        <div class="form-group">
+          <%= f.text_field :make, class: "form-control input-lg",placeholder: "Make" %>
+        </div>
+        <div class="form-group">
+           <%= f.text_field :model, class: "form-control input-lg", placeholder: "Model" %>
+        </div>
+        <div class="form-group">
+          <%= f.number_field :year, class: "form-control input-lg", placeholder: "Year" %>
+        </div>
+        <div class="form-group">
+          <%= f.number_field :mileage, class: "form-control input-lg", placeholder: "Mileage" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :color, class: "form-control input-lg", placeholder: "Color" %>
+          </div>
+        <div class="form-group">
+          <%= f.text_field :style, class: "form-control input-lg", placeholder: "style" %>
+          </div>
+        <div class="form-group">
+          <%= f.number_field :number_of_doors, class: "form-control input-lg", placeholder: "Number of Doors" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :trans, class: "form-control input-lg", placeholder: "Transmission" %>
+        </div>
+        <div class="form-group">
+          <%= f.number_field :price, class: "form-control input-lg", placeholder: "Price" %>
+        </div>
+
+  <br>
+    <div class="form-group">
+      <%= f.label "Add Photo" %><br>
+      <%= f.file_field :photo %>
+      <% if @vehicle.photo_file_name != nil %>
+        <%= image_tag @vehicle.photo.url(:thumb) %>
+       <%= f.label "Remove Photo" %>
+       <%= f.check_box :remove_photo %>
+       <% end %>
+    </div>
+    <div class="cant-see-me">
+      <%= f.number_field :user_id, value: current_user.id %>
+      <%= f.number_field :vehicle_id, value: @vehicle.id %>
+    </div>
+    <div class="actions form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<% end %>
